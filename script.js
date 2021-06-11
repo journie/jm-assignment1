@@ -1,26 +1,3 @@
-/* tile object
-
-180px w
-170px h*/
-
-/*user:
-profile image
-username
-age
-description*/
-
-//randomly generate user info profile image: picsum.photos
-
-// class User {
-//     constructor(username, age, description, profileImg){
-//         this.username = username;
-//         this.age = age;
-//         this.description = description;
-//         this.profileImg = profileImg;
-//     }
-// }
-
-
 var users = [];
 
 function generateString(){
@@ -32,9 +9,9 @@ function populateUsersArray(){
     for(let i=0; i<100; i++){
        users.push({
         username: generateString(),
-        age: Math.random(),
+        age: Math.floor(Math.random() * 100),
         description: generateString(),
-        profileImg: 'https://picsum.photos/120/120?random=' + i,
+        profileImg: 'https://picsum.photos/100/100?random=' + i,
        })
     }
     console.log(users);
@@ -43,21 +20,25 @@ function populateUsersArray(){
 
 function addTiles(users){
     for(let i=0; i<users.length; i++){
+        const tileContainer = document.getElementById("tile-container");
         var currentUser = users[i];
         var newTile = document.createElement("div");
         newTile.className = 'tile';
         var username = document.createElement("p");
-        username.appendChild(document.createTextNode(currentUser.username));
+        username.appendChild(document.createTextNode("Username: " + currentUser.username));
         var age = document.createElement("p");
-        age.appendChild(document.createTextNode(currentUser.age));
+        age.appendChild(document.createTextNode("Age: " +currentUser.age));
         var description = document.createElement("p");
-        description.appendChild(document.createTextNode(currentUser.description));
+        description.appendChild(document.createTextNode("Description: " + currentUser.description));
         var img = document.createElement('img');
         img.src = currentUser.profileImg;
         newTile.append(img, username, age, description);
-        document.body.appendChild(newTile);
+        tileContainer.appendChild(newTile);
     }
 }
+
+
+
 
 window.onload = function(){
     populateUsersArray();

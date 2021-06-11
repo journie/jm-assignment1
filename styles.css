@@ -1,0 +1,22 @@
+:root {
+  --body-bg: #f5f5f5;
+  --text-color: #252525;
+}
+.dark_mode {
+  --body-bg: #252525;
+  --text-color: #f5f5f5;
+}
+
+#tile-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tile {
+  min-width: 180px;
+  max-height: 170px;
+}
+
+.tile p {
+  line-height: 0.3;
+}
