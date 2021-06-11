@@ -11,6 +11,11 @@
 <body>
   <script src="script.js"></script>
   <button onclick="toggleDark()">toggle dark mode</button>
+  <select id="selector" name="sort_by" onchange="sortUsers()">
+    <option value="sort users">sort users</option>
+    <option value="age">age</option>
+    <option value="username">username</option>
+  </select>
   <div id="tile-container"></div>
 </body>
 </html>

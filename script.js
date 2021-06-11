@@ -14,7 +14,6 @@ function populateUsersArray(){
         profileImg: 'https://picsum.photos/100/100?random=' + i,
        })
     }
-    console.log(users);
     return users;
 }
 
@@ -27,7 +26,7 @@ function addTiles(users){
         var username = document.createElement("p");
         username.appendChild(document.createTextNode("Username: " + currentUser.username));
         var age = document.createElement("p");
-        age.appendChild(document.createTextNode("Age: " +currentUser.age));
+        age.appendChild(document.createTextNode("Age: " + currentUser.age));
         var description = document.createElement("p");
         description.appendChild(document.createTextNode("Description: " + currentUser.description));
         var img = document.createElement('img');
@@ -42,7 +41,29 @@ function toggleDark(){
     body.classList.toggle("dark-mode");
 }
 
+function sortUsersByAge(){
+    users.sort((a, b) => (a.age > b.age) ? 1 : -1);
+    const tileContainer = document.getElementById("tile-container");
+    tileContainer.innerHTML='';
+    addTiles(users);
+}
 
+function sortUsersByName(){
+    users.sort((a, b) => (a.username > b.username) ? 1 : -1);
+    const tileContainer = document.getElementById("tile-container");
+    tileContainer.innerHTML='';
+    addTiles(users);
+}
+
+function sortUsers(){
+    var select = document.getElementById("selector");
+    if(select.value == "age"){
+        sortUsersByAge();
+    }
+    if(select.value == "username"){
+        sortUsersByName();
+    }
+}
 window.onload = function(){
     populateUsersArray();
     addTiles(users);
