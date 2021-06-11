@@ -37,7 +37,10 @@ function addTiles(users){
     }
 }
 
-
+function toggleDark(){
+    var body = document.body;
+    body.classList.toggle("dark-mode");
+}
 
 
 window.onload = function(){
